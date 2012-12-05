@@ -127,13 +127,14 @@
             // loadProfileToolStripMenuItem
             // 
             this.loadProfileToolStripMenuItem.Name = "loadProfileToolStripMenuItem";
-            this.loadProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.loadProfileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loadProfileToolStripMenuItem.Text = "Load Profile";
+            this.loadProfileToolStripMenuItem.Click += new System.EventHandler(this.loadProfileToolStripMenuItem_Click);
             // 
             // saveProfileToolStripMenuItem
             // 
             this.saveProfileToolStripMenuItem.Name = "saveProfileToolStripMenuItem";
-            this.saveProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.saveProfileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveProfileToolStripMenuItem.Text = "Save Profile";
             // 
             // mnuQuit

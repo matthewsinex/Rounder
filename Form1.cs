@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Rounder
 {
@@ -131,6 +132,56 @@ namespace Rounder
                 txtSeconds.Clear();
             }
 
+        }
+
+        private void loadProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Text Files (.txt)|*.txt|All Files (*.*)|*.*";
+            DialogResult result = openFile.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                string file = openFile.FileName;
+                try
+                {
+                    string fileText = File.ReadAllText(file);
+                    string[] lines = fileText.Split('\n');
+                    
+                    //strips each string of the carriage return
+                    for(int i = 0; i < lines.Length; i++)
+                    {
+                        lines[i] = lines[i].Trim();
+                    }
+
+                    //load roles
+                    int j = 0;
+                    while (lines[j] != "#")
+                    {
+                        lstRoles.Items.Add(lines[j]);
+                        j++;
+                    }
+
+                    //load questions
+                    j++;
+                    while (lines[j] != "#")
+                    {
+                        txtQuestions.Text += lines[j] + "\n";
+                        j++;
+                    }
+
+                    //load time
+                    j++;
+                    txtMinutes.Text = lines[j];
+                    j++;
+                    txtSeconds.Text = lines[j];
+
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Error opening file!");
+                }
+            }
         }
 
     }
