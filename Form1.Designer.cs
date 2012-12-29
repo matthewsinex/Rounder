@@ -136,6 +136,7 @@
             this.saveProfileToolStripMenuItem.Name = "saveProfileToolStripMenuItem";
             this.saveProfileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveProfileToolStripMenuItem.Text = "Save Profile";
+            this.saveProfileToolStripMenuItem.Click += new System.EventHandler(this.saveProfileToolStripMenuItem_Click);
             // 
             // mnuQuit
             // 

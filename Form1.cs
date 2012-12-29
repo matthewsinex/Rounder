@@ -63,40 +63,10 @@ namespace Rounder
                 return;
             if (errProvider.GetError(grpDuration).Length != 0)
                 return;
-            
-            Round myRound = new Round(); //round object
-            
-            //roles
-            List<string> roles = new List<string>();
-            for (int i = 0; i < lstRoles.Items.Count; i++)
-            {
-                roles.Add(lstRoles.Items[i].ToString());
-            }
-
-            //questions
-            List<string> questions = new List<string>();
-            string _questions = txtQuestions.Text;
-            char[] delimiters = new char[] { '\r', '\n' };
-            string[] parts = _questions.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < parts.Length; i++)
-            {
-                myRound.Questions.Add(parts[i]);
-            }
-            
-            //duration
-            int minutes;
-            int.TryParse(txtMinutes.Text, out minutes);
-            int seconds;
-            int.TryParse(txtSeconds.Text, out seconds);
-
-            //set properties for Round object
-            myRound.setDuration(minutes, seconds);
-            myRound.Questions = questions;
-            myRound.Roles = roles;
 
             //open the student view form
             RounderStudentView rounderSV = new RounderStudentView();
-            rounderSV.populate(myRound);
+            rounderSV.populate(loadRounderObject());
             rounderSV.Show();
         }
 
@@ -132,6 +102,41 @@ namespace Rounder
                 txtSeconds.Clear();
             }
 
+        }
+
+        private Round loadRounderObject()
+        {
+            Round myRound = new Round(); //round object
+
+            //roles
+            List<string> roles = new List<string>();
+            for (int i = 0; i < lstRoles.Items.Count; i++)
+            {
+                roles.Add(lstRoles.Items[i].ToString());
+            }
+
+            //questions
+            List<string> questions = new List<string>();
+            string _questions = txtQuestions.Text;
+            char[] delimiters = new char[] { '\r', '\n' };
+            string[] parts = _questions.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < parts.Length; i++)
+            {
+                myRound.Questions.Add(parts[i]);
+            }
+
+            //duration
+            int minutes;
+            int.TryParse(txtMinutes.Text, out minutes);
+            int seconds;
+            int.TryParse(txtSeconds.Text, out seconds);
+
+            //set properties for Round object
+            myRound.setDuration(minutes, seconds);
+            myRound.Questions = questions;
+            myRound.Roles = roles;
+
+            return myRound;
         }
 
         private void loadProfileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -181,6 +186,29 @@ namespace Rounder
                 {
                     MessageBox.Show("Error opening file!");
                 }
+            }
+        }
+
+        private void saveProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //call error checking method
+            validation();
+
+            if (errProvider.GetError(lstRoles).Length != 0)
+                return;
+            if (errProvider.GetError(txtQuestions).Length != 0)
+                return;
+            if (errProvider.GetError(grpDuration).Length != 0)
+                return;
+
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "Text Files (.txt)|*.txt|All Files (*.*)|*.*";
+            saveFile.ShowDialog();
+
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                string name = saveFile.FileName;
+                //write to the file
             }
         }
 
