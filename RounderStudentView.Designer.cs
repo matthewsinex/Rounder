@@ -34,15 +34,18 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblTime = new System.Windows.Forms.Label();
             this.rtbQuestion = new System.Windows.Forms.RichTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblRoles
             // 
             this.lblRoles.AutoSize = true;
-            this.lblRoles.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoles.Location = new System.Drawing.Point(60, 50);
+            this.lblRoles.Font = new System.Drawing.Font("Candara", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoles.Location = new System.Drawing.Point(50, 38);
             this.lblRoles.Name = "lblRoles";
-            this.lblRoles.Size = new System.Drawing.Size(147, 55);
+            this.lblRoles.Size = new System.Drawing.Size(137, 59);
             this.lblRoles.TabIndex = 0;
             this.lblRoles.Text = "Roles";
             this.lblRoles.Visible = false;
@@ -79,7 +82,7 @@
             // 
             this.rtbQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbQuestion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtbQuestion.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbQuestion.Font = new System.Drawing.Font("Candara", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbQuestion.Location = new System.Drawing.Point(483, 50);
             this.rtbQuestion.Name = "rtbQuestion";
             this.rtbQuestion.ReadOnly = true;
@@ -87,18 +90,40 @@
             this.rtbQuestion.TabIndex = 4;
             this.rtbQuestion.Text = "";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblRoles);
+            this.groupBox1.Location = new System.Drawing.Point(10, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(456, 435);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Location = new System.Drawing.Point(498, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(674, 539);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            // 
             // RounderStudentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 762);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rtbQuestion);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.lblRoles);
             this.Name = "RounderStudentView";
             this.Text = "RounderStudentView";
             this.Load += new System.EventHandler(this.RounderStudentView_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +136,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.RichTextBox rtbQuestion;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
