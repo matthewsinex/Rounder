@@ -201,14 +201,30 @@ namespace Rounder
             if (errProvider.GetError(grpDuration).Length != 0)
                 return;
 
+            //get the Rounder object
+            Round myRound = loadRounderObject();
+
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.Filter = "Text Files (.txt)|*.txt|All Files (*.*)|*.*";
-            saveFile.ShowDialog();
 
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
-                string name = saveFile.FileName;
                 //write to the file
+                StreamWriter sw = new StreamWriter(saveFile.FileName);
+                foreach (string role in myRound.Roles)
+                {
+                    sw.WriteLine(role);
+                }
+                sw.WriteLine("#");
+                foreach (string question in myRound.Questions)
+                {
+                    sw.WriteLine(question);
+                }
+                sw.WriteLine("#");
+                sw.WriteLine(myRound.getDuration().Minutes.ToString());
+                sw.WriteLine(myRound.getDuration().Seconds.ToString());
+
+                sw.Close();
             }
         }
 
